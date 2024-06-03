@@ -1,0 +1,174 @@
+{#
+/**
+ * @file
+ *
+ * Default product template.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapper.
+ * - product: The rendered product fields.
+ *   Use 'product' to print them all, or print a subset such as
+ *   'product.title'. Use the following code to exclude the
+ *   printing of a given field:
+ *   @code
+ *   {{ product|without('title') }}
+ *   @endcode
+ * - product_entity: The product entity.
+ * - product_url: The product URL.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @ingroup themeable
+ */
+#}
+{#
+<article{{ attributes }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {{- product|without('variation_attributes') -}}
+</article>
+#}
+
+
+<!--product view -->
+<section {{ attributes.addClass('mt-10 mb-12') }}>
+  <div>
+    <div class="flex flex-col md:flex-row gap-12">
+      <div class="w-full md:w-1/2">
+        <div class="h-full" x-data="{
+                  currentImageIndex: 0,
+                  images: [
+                      {% for item in variation_image_uris %}
+                          '{{ file_url(item) }}'{{ not loop.last ? ',' }}
+                      {% endfor %}
+                  ],
+                  setCurrentImage(index) {
+                      this.currentImageIndex = index;
+                      this.updateMainImageSrc();
+                  },
+                  goNext() {
+                      if (this.currentImageIndex < this.images.length - 1) {
+                          this.currentImageIndex++;
+                      } else {
+                          this.currentImageIndex = 0;
+                      }
+                      this.updateMainImageSrc();
+                  },
+                  goPrev() {
+                      if (this.currentImageIndex > 0) {
+                          this.currentImageIndex--;
+                      } else {
+                          this.currentImageIndex = this.images.length - 1;
+                      }
+                      this.updateMainImageSrc();
+                  },
+                  updateMainImageSrc() {
+                  const divMainImage = this.$refs.mainImage;
+                  const mainImage = divMainImage.querySelector('img:first-child');
+                  if (mainImage)
+                      mainImage.src = this.images[this.currentImageIndex];
+                 }
+              }">
+          <div class="bg-white h-5/6 min-h-64 max-h-96 md:min-h-[512px] overflow-hidden relative flex justify-center">
+            <div class="w-full">
+              <!-- Navigation Left -->
+              <a class="absolute text-2xl left-4 top-1/2 transform -translate-y-1/2" @click.prevent="goPrev()" href="#">
+                <i class="fa-solid fa-chevron-left"></i>
+              </a>
+              <!-- Navigation Right -->
+              <a class="absolute text-2xl right-4 top-1/2 transform -translate-y-1/2" @click.prevent="goNext()"
+                 href="#">
+                <i class="fa-solid fa-chevron-right"></i>
+              </a>
+              <!-- Main Image -->
+              <div class="flex mainImage" x-ref="mainImage">
+                {{ product.variation_field_images.0 }}
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap justify-center  gap-x-2 gap-y-2 pt-4">
+            <template x-for="(image, index) in images" :key="index">
+              <div class="min-w-9 max-w-16 justify-center">
+                <a href="#" :class="{ 'active': currentImageIndex === index }" @click.prevent="setCurrentImage(index)">
+                  <img class="w-full object-contain" :src="image" alt="">
+                </a>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+      <div class="product-single w-full md:w-1/2 flex flex-col">
+        <div>
+          <div class="mb-2 text-3xl font-medium font-oswald text-darkOlive">{{ product.title }}</div>
+          <div class="text-darkOlive font-open-sans mb-5 flex">MSRP: From
+            <div class="inline ml-1">{{ product.variation_commerce_price }}</div>
+          </div>
+          {{ product.body }}
+        </div>
+        <div class=" mt-8 flex-grow">
+          <div x-data="{ active: null }">
+
+            {% if product.field_options['#title']|length > 0 %}
+            <div>
+              <div @click="active === 0 ? active = null : active = 0"
+                   class="product-accordion-header hover:text-forestGreen cursor-pointer flex justify-between py-2 border-b border-darkOlive uppercase"
+                   :class="{'text-forestGreen': active === 0}">
+                <span>Additional Info</span>
+                <i class="relative top-2"
+                   :class="{'fa-solid fa-plus': active !== 0, 'fa-solid fa-minus': active === 0}"></i>
+              </div>
+              <div class="accordion-body" x-show="active === 0" style="display: none;">
+                <div class="mt-2 py-2">
+                  {{ product.field_options }}
+                </div>
+              </div>
+            </div>
+            {% endif %}
+            {% if product.field_specs['#title']|length > 0 %}
+            <div>
+              <div @click="active === 1 ? active = null : active = 1"
+                   class="product-accordion-header hover:text-forestGreen cursor-pointer flex justify-between py-2 border-b border-darkOlive uppercase"
+                   :class="{'text-forestGreen': active === 1}">
+                <span>Specifications</span>
+                <i class="relative top-2"
+                   :class="{'fa-solid fa-plus': active !== 1, 'fa-solid fa-minus': active === 1}"></i>
+              </div>
+              <div class="accordion-body" x-show="active === 1" style="display: none;">
+                <div class="mt-2 py-2 text-sm">
+                  {{ product.field_specs }}
+                </div>
+              </div>
+            </div>
+            {% endif %}
+            {% if product.field_item_number['#title']|length > 0 %}
+            <div>
+              <div @click="active === 2 ? active = null : active = 2"
+                   class="product-accordion-header hover:text-forestGreen cursor-pointer flex justify-between py-2 border-b border-darkOlive uppercase"
+                   :class="{'text-forestGreen': active === 2}">
+                <span>Item Number</span>
+                <i class="relative top-2"
+                   :class="{'fa-solid fa-plus': active !== 2, 'fa-solid fa-minus': active === 2}"></i>
+              </div>
+              <div class="accordion-body" x-show="active === 2" style="display: none;">
+                <div class="mt-2 py-2">
+                  {{ product.field_item_number }}
+                </div>
+              </div>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <div>
+          {#          <a #}
+          {#            class="hover:text-pigeonGray bg-darkOlive mt-8 inline-block  text-white no-underline uppercase py-3 px-8 tracking-widest text-center" #}
+          {#            href="#">Find a Dealer</a> #}
+        </div>
+        <div class="mt-8"> {{ product.variations }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end product view -->

@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * Theme override for an 'input' #type form element.
+ *
+ * Available variables:
+ * - attributes: A list of HTML attributes for the input element.
+ * - children: Optional additional rendered elements.
+ *
+ * @see template_preprocess_input()
+ */
+#}
+{# Check if the input type is 'submit' #}
+{% if attributes.type == 'submit' %}
+  {# Add specific classes for the submit button #}
+  <input{{ attributes.addClass('cursor-pointer hover:text-pigeonGray p-2 inline-block bg-darkOlive text-white uppercase px-8 py-3') }} />{{ children }}
+{% else %}
+  {# Default styling for other inputs #}
+  <input{{ attributes.addClass('block w-full px-2 py-1') }} />{{ children }}
+{% endif %}

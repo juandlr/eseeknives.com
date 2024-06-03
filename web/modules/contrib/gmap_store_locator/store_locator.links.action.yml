@@ -1,0 +1,5 @@
+entity.store_locator.add_form:
+  route_name: entity.store_locator.add_form
+  title: 'Add Store Locator'
+  appears_on:
+    - entity.store_locator.collection

@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ----------------------------------------- global */
+h1, h2, h3, h4 {
+  font-family: "Oswald", sans-serif;
+}
+
+.vertical-center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ----------------------------------------- header */
+.menu-desktop {
+  .menu-item {
+    &:hover > ul {
+      display: block;
+    }
+  }
+}
+
+.menu-mobile {
+  & a:hover {
+    color: #718c4c;
+  }
+}
+
+/* ----------------------------------------- components */
+.carousel {
+  /* the slides */
+  .slick-slide {
+    margin: 0 7px;
+  }
+  /* the parent */
+  .slick-list {
+    margin: 0 -7px;
+  }
+  & svg {
+    &.slick-arrow {
+      display: none;
+    }
+    &.slick-next {
+      right: -40px;
+    }
+    &.slick-prev {
+      left: -40px;
+    }
+    &:hover {
+      color: #3a7641;
+    }
+  }
+}
+
+/* ----------------------------------------- custom checkboxes */
+/* On mouse-over, add a grey background color */
+.checkbox-container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark::after {
+  font-family: "FontAwesome", sans-serif;
+  content: "\f00c";
+  position: absolute;
+  display: none;
+  font-size: 7px;
+  left: 1px;
+  top: 1px;
+  line-height: 1;
+}
+
+/* Small screens and above */
+@media (min-width: 640px) {
+  .checkmark::after {
+    font-size: 9px;
+    left: 1px;
+    top: 1px;
+  }
+}
+
+
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+
+

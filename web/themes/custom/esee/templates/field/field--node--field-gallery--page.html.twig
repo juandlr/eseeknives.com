@@ -1,0 +1,128 @@
+{#
+/**
+ * @file
+ * Theme override for a field.
+ *
+ * To override output, copy the "field.html.twig" from the templates directory
+ * to your theme's directory and customize it, just like customizing other
+ * Drupal templates such as page.html.twig or node.html.twig.
+ *
+ * Instead of overriding the theming for all fields, you can also just override
+ * theming for a subset of fields using
+ * @link themeable Theme hook suggestions. @endlink For example,
+ * here are some theme hook suggestions that can be used for a field_foo field
+ * on an article node type:
+ * - field--node--field-foo--article.html.twig
+ * - field--node--field-foo.html.twig
+ * - field--node--article.html.twig
+ * - field--field-foo.html.twig
+ * - field--text-with-summary.html.twig
+ * - field.html.twig
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the containing element.
+ * - label_hidden: Whether to show the field label or not.
+ * - title_attributes: HTML attributes for the title.
+ * - label: The label for the field.
+ * - multiple: TRUE if a field can contain multiple items.
+ * - items: List of all the field items. Each item contains:
+ *   - attributes: List of HTML attributes for each item.
+ *   - content: The field item's content.
+ * - entity_type: The entity type to which the field belongs.
+ * - field_name: The name of the field.
+ * - field_type: The type of the field.
+ * - label_display: The display settings for the label.
+ *
+ *
+ * @see template_preprocess_field()
+ */
+#}
+{%
+  set classes = [
+    'field',
+    'field--name-' ~ field_name|clean_class,
+    'field--type-' ~ field_type|clean_class,
+    'field--label-' ~ label_display,
+    label_display == 'inline' ? 'clearfix',
+  ]
+%}
+{%
+  set title_classes = [
+    'field__label',
+    label_display == 'visually_hidden' ? 'visually-hidden',
+  ]
+%}
+
+{% if label_hidden %}
+  {% if multiple %}
+
+    <div class="h-full" x-data="{
+                  currentImageIndex: 0,
+                  images: [
+                      {% for item in items %}
+                          '{{ file_url(item.content['#media'].field_media_image.entity.uri.value) }}' {{ not loop.last ? ',' }}
+                      {% endfor %}
+                  ],
+                  setCurrentImage(index) {
+                      console.log(index);
+                      this.currentImageIndex = index;
+                  },
+                  goNext() {
+                      if (this.currentImageIndex < this.images.length - 1) {
+                          this.currentImageIndex++;
+                      } else {
+                          this.currentImageIndex = 0; // Reset to the first image when reaching the end.
+                      }
+                  },
+                  goPrev() {
+                      if (this.currentImageIndex > 0) {
+                          this.currentImageIndex--;
+                      } else {
+                          this.currentImageIndex = this.images.length - 1; // Set to the last image if it's currently at the first one.
+                      }
+                  }
+              }">
+      <div class="bg-white h-5/6 min-h-64 max-h-64 md:min-h-[512px] overflow-hidden relative flex justify-center">
+        <div class="w-full">
+          <!-- Navigation Left -->
+          <a class="absolute text-2xl left-4 top-1/2 transform -translate-y-1/2" @click.prevent="goPrev()" href="#">
+            <i class="fa-solid fa-chevron-left"></i>
+          </a>
+          <!-- Navigation Right -->
+          <a class="absolute text-2xl right-4 top-1/2 transform -translate-y-1/2" @click.prevent="goNext()" href="#">
+            <i class="fa-solid fa-chevron-right"></i>
+          </a>
+          <!-- Main Image -->
+          <img :src="images[currentImageIndex]" class="object-cover h-full w-full" alt="">
+        </div>
+      </div>
+
+      <div class="flex h-24 gap-x-4 pt-4">
+        <template x-for="(image, index) in images" :key="index">
+          <div class="flex-1 min-w-0 max-w-28 justify-center">
+            <a href="#" :class="{ 'active': currentImageIndex === index }" @click.prevent="setCurrentImage(index)">
+              <img class="w-full h-full object-contain" :src="image" alt="">
+            </a>
+          </div>
+        </template>
+      </div>
+    </div>
+  {% else %}
+    {% for item in items %}
+      <div{{ attributes.addClass(classes, 'field__item') }}>{{ item.content }}</div>
+    {% endfor %}
+  {% endif %}
+{% else %}
+  <div{{ attributes.addClass(classes) }}>
+    <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
+    {% if multiple %}
+      <div class="field__items">
+    {% endif %}
+    {% for item in items %}
+      <div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>
+    {% endfor %}
+    {% if multiple %}
+      </div>
+    {% endif %}
+  </div>
+{% endif %}

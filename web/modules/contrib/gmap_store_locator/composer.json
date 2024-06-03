@@ -1,0 +1,27 @@
+{
+    "name": "drupal/gmap_store_locator",
+    "type": "drupal-module",
+    "description": "Simple module to display a Store locator with a Dynamic Map.",
+    "keywords": [
+        "Drupal",
+        "Google Maps",
+        "Store Locator"
+    ],
+    "authors": [
+        {
+            "name": "George Anderson (geoanders)",
+            "homepage": "https://www.drupal.org/u/geoanders",
+            "role": "Maintainer"
+        }
+    ],
+    "license": "GPL-2.0+",
+    "homepage": "https://www.drupal.org/project/gmap_store_locator",
+    "minimum-stability": "dev",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/gmap_store_locator",
+        "source": "https://git.drupalcode.org/project/gmap_store_locator"
+    },
+    "require": {
+        "drupal/core": "^9.3 || ^10"
+    }
+}

@@ -1,0 +1,25 @@
+id: location_import
+label: 'Location Imports'
+migration_group: migrate_drupal_7
+source:
+  plugin: d7_node
+  node_type: dealer_location
+  ids:
+  nid:
+    type: integer
+process:
+  id: nid
+  uuid: uuid
+  name: title
+  address_one: field_address
+  latitude: field_latitude
+  longitude: field_longitude
+  field_phone_number: field_phone_number
+  website: field_website
+destination:
+  plugin: 'entity:store_locator'
+dependencies:
+  enforced:
+    module:
+      - gmap_store_locator
+

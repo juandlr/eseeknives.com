@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * Theme override for an 'input' #type form element.
+ *
+ * Available variables:
+ * - attributes: A list of HTML attributes for the input element.
+ * - children: Optional additional rendered elements.
+ *
+ * @see template_preprocess_input()
+ */
+#}
+{% set classes = [
+  'placeholder:text-ashGray',
+  'text-base',
+  'h-12',
+  'max-w-72',
+  'px-4',
+  'text-gray-500',
+  'bg-transparent',
+  'align-top',
+  'border-2',
+  'border-white'
+]
+%}
+<input{{ attributes.addClass(classes) }} placeholder="{{ element['#title'] }}" />{{ children }}

@@ -1,0 +1,10 @@
+name: Dealer location import
+description: Import dealer locations.
+package: Custom
+type: module
+core_version_requirement: ^9.4 || ^10
+dependencies:
+  - drupal:migrate
+  - migrate_plus:migrate_plus
+  - drupal:menu_ui
+  - drupal:path

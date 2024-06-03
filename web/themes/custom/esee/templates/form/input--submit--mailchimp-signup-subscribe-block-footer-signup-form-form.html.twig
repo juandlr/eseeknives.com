@@ -1,0 +1,16 @@
+{#
+/**
+ * @file
+ * Theme override for an 'input' #type form element.
+ *
+ * Available variables:
+ * - attributes: A list of HTML attributes for the input element.
+ * - children: Optional additional rendered elements.
+ *
+ * @see template_preprocess_input()
+ */
+#}
+<button {{ attributes.addClass('group w-11 h-12 border-none cursor-pointer bg-white') }}>
+  <i class="group-hover:text-pigeonGray text-xl text-darkOlive fa-solid fa-arrow-right"></i>
+</button>
+{{ children }}

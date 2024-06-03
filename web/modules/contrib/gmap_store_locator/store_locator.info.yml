@@ -1,0 +1,11 @@
+name: Store Locator
+type: module
+description: 'Store Locator with Google Maps integration.'
+package: 'Location & Map'
+configure: store_locator.settings_form
+core_version_requirement: ^9.3 || ^10
+
+# Information added by Drupal.org packaging script on 2022-08-23
+version: '3.0.0'
+project: 'gmap_store_locator'
+datestamp: 1661292770

@@ -1,0 +1,20 @@
+<header>
+  <div class="container mx-auto max-w-5xl pl-4 pr-4 hidden md:block  header-desktop">
+    <div class="flex justify-between pt-10 pb-10">
+      <div style="position: relative">
+        {{ page.header }}
+      </div>
+      <nav class="menu-desktop">
+        {{ page.primary_menu }}
+      </nav>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="menu-mobile container mx-auto overflow-hidden relative px-3 pb-6 pt-4">
+    <div id="menu" class="text-fernGreen text-base">
+      {{ drupal_menu('main', 1, 2, true) }}
+    </div>
+  </div>
+  <!-- end mobile Menu -->
+</header>

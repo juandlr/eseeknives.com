@@ -1,0 +1,18 @@
+store_locator.page:
+  js:
+    assets/js/store-locator.js: { }
+  css:
+    component:
+      assets/css/store-locator.css: { }
+  dependencies:
+    - core/jquery
+    - core/drupal.ajax
+    - core/drupalSettings
+
+store_locator.geocodes:
+  js:
+    assets/js/user-geocodes.js: { }
+  dependencies:
+    - core/jquery
+    - core/drupal.ajax
+    - core/drupalSettings

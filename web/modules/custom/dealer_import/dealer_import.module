@@ -1,0 +1,105 @@
+<?php
+
+/**
+ * @file
+ * Defines simple country field type.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+use Drupal\migrate\MigrateSkipRowException;
+use Drupal\migrate\Plugin\MigrateSourceInterface;
+use Drupal\migrate\Plugin\MigrationInterface;
+use Drupal\migrate\Row;
+
+/**
+ * Implements hook_migrate_prepare_row()
+ */
+/*function custom_module_migrate_prepare_row(Row $row, MigrateSourceInterface $source, MigrationInterface $migration) {
+  if ($migration->id() == 'd7_field') {
+    var_dump("Migration id: ".$migration->id());
+    $allowed = [
+      'field_address',
+      'field_website',
+      'field_phone_number',
+      'field_latitude',
+      'field_longitude',
+      'field_image',
+      'field_slider_images',
+      'field_gallery_images',
+      'field_dealer_item_number',
+      'title_field',
+      'commerce_price',
+      'sku',
+      'field_images',
+      'commerce_stock',
+      'field_product_category',
+      'field_product',
+      'field_suggested_use',
+      'field_dealer_number',
+      'field_options',
+      'field_specs',
+      'field_item_number'
+    ];
+
+    if (!in_array($row->getSourceProperty('field_name'), $allowed)) {
+      throw new MigrateSkipRowException('', TRUE);
+    }
+    echo $row->getSourceProperty('field_name');
+  }
+
+  if ($migration->id() == 'd7_field_instance') {
+    echo "d7_field_instance";
+    $bundles = [
+      'product',
+      'blog_article',
+      'dealer_location'
+    ];
+
+    $allowed = [
+      'field_address',
+      'field_website',
+      'field_phone_number',
+      'field_latitude',
+      'field_longitude',
+      'field_image',
+      'field_slider_images',
+      'field_gallery_images',
+      'field_dealer_item_number',
+      'title_field',
+      'commerce_price',
+      'sku',
+      'field_images',
+      'commerce_stock',
+      'field_product_category',
+      'field_product',
+      'field_suggested_use',
+      'field_dealer_number',
+      'field_options',
+      'field_specs',
+      'field_item_number'
+    ];
+
+    if (!in_array($row->getSourceProperty('field_name'), $allowed) || !in_array($row->getSourceProperty('bundle'), $bundles)) {
+      throw new MigrateSkipRowException('', TRUE);
+    }
+    echo $row->getSourceProperty('field_name');
+  }
+
+  if ($migration->id() == 'd7_node_type') {
+    $allowed = [
+      'blog_article',
+      'dealer_location'
+    ];
+
+    if (!in_array($row->getSourceProperty('type'), $allowed)) {
+      throw new MigrateSkipRowException('', TRUE);
+    }
+    echo "d7_node_type";
+  }
+
+//  throw new MigrateSkipRowException('', TRUE);
+}
+
+*/

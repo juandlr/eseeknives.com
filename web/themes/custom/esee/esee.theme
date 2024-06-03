@@ -1,0 +1,87 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming.
+ */
+
+use Drupal\commerce_product\Entity\Product;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\taxonomy\Entity\Term;
+
+/**
+ * Implements hook_preprocess_image_widget().
+ */
+function esee_preprocess_image_widget(array &$variables) {
+  $data = &$variables['data'];
+
+  // This prevents image widget templates from rendering preview container HTML
+  // to users that do not have permission to access these previews.
+  // @todo revisit in https://drupal.org/node/953034
+  // @todo revisit in https://drupal.org/node/3114318
+  if (isset($data['preview']['#access']) && $data['preview']['#access'] === FALSE) {
+    unset($data['preview']);
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function esee_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  if (isset($variables['elements']['content']['#block_content'])) {
+    array_splice($suggestions, 1, 0, 'block__type__'.$variables['elements']['content']['#block_content']->bundle());
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_page_alter().
+ */
+function esee_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $suggestions[] = 'page__'.$node->bundle();
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for commerce_product entities.
+ */
+function esee_preprocess_commerce_product(array &$variables) {
+  /** @var \Drupal\commerce_product\Entity\ProductInterface $product */
+  $product = $variables['elements']['#commerce_product'];
+  $image_uris = [];
+
+  // Load variations of the product.
+  $variations = $product->getVariations();
+
+  // Iterate through variations to get image URIs.
+  foreach ($variations as $variation) {
+    if ($variation->hasField('field_images') && !$variation->get('field_images')->isEmpty()) {
+      foreach ($variation->get('field_images') as $image) {
+        $image_uris[] = $image->entity->getFileUri();
+      }
+    }
+  }
+
+  $variables['variation_image_uris'] = $image_uris;
+}
+
+/**
+ * Implements hook_preprocess_HOOK()
+ */
+function esee_preprocess_node(&$variables) {
+  $excludeTitles = [
+    'node/7',
+    'node/1',
+  ];
+
+  $node = $variables['node'];
+  if ($node) {
+    // Build the actual URL path for the node.
+    $current_path = 'node/'.$node->id();
+
+    // Check if the current path is in the exclude list.
+    if (in_array($current_path, $excludeTitles)) {
+      unset($variables['label']);
+    }
+  }
+}
