@@ -1,0 +1,13 @@
+name: Postmark
+type: module
+description: Send email using the third party Postmark service.
+core_version_requirement: ^8.8 || ^9 || ^10 || ^11
+package: Mail
+configure: postmark.settings
+dependencies:
+  - mailsystem:mailsystem
+
+# Information added by Drupal.org packaging script on 2024-05-16
+version: '8.x-1.3'
+project: 'postmark'
+datestamp: 1715890585
