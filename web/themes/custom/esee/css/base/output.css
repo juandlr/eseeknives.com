@@ -670,6 +670,10 @@ video {
   margin-bottom: 0.25rem;
 }
 
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
 .mb-12 {
   margin-bottom: 3rem;
 }
@@ -852,10 +856,6 @@ video {
 
 .min-w-9 {
   min-width: 2.25rem;
-}
-
-.max-w-10 {
-  max-width: 2.5rem;
 }
 
 .max-w-16 {
@@ -1085,13 +1085,14 @@ video {
   padding: 0.5rem;
 }
 
-.p-3 {
-  padding: 0.75rem;
-}
-
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 
 .px-4 {
@@ -1159,13 +1160,12 @@ video {
   padding-bottom: 1.75rem;
 }
 
-.px-3 {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-}
-
 .pb-10 {
   padding-bottom: 2.5rem;
+}
+
+.pb-12 {
+  padding-bottom: 3rem;
 }
 
 .pb-2 {
@@ -1176,8 +1176,8 @@ video {
   padding-bottom: 1rem;
 }
 
-.pb-8 {
-  padding-bottom: 2rem;
+.pb-6 {
+  padding-bottom: 1.5rem;
 }
 
 .pl-2 {
@@ -1206,18 +1206,6 @@ video {
 
 .pt-4 {
   padding-top: 1rem;
-}
-
-.pt-8 {
-  padding-top: 2rem;
-}
-
-.pb-1 {
-  padding-bottom: 0.25rem;
-}
-
-.pb-6 {
-  padding-bottom: 1.5rem;
 }
 
 .text-center {
@@ -1283,12 +1271,13 @@ video {
   text-transform: capitalize;
 }
 
-.leading-9 {
-  line-height: 2.25rem;
-}
-
 .tracking-widest {
   letter-spacing: 0.1em;
+}
+
+.text-ashGray {
+  --tw-text-opacity: 1;
+  color: rgb(100 97 93 / var(--tw-text-opacity));
 }
 
 .text-black {
@@ -1493,6 +1482,65 @@ input[type="checkbox"] {
   color: inherit !important;
 }
 
+/* Container for the messages */
+
+[data-drupal-messages] {
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+/* Status message styling */
+
+.messages--status {
+  background-color: #dff0d8;
+  /* Light green background */
+  color: #3c763d;
+  /* Dark green text */
+  border: 1px solid #d6e9c6;
+  /* Slightly darker green border */
+  padding: 10px 15px;
+  border-radius: 4px;
+}
+
+/* Icon styling */
+
+.messages--status::before {
+  content: "\2713";
+  /* Checkmark icon */
+  font-size: 20px;
+  color: #3c763d;
+  /* Dark green icon */
+  margin-right: 10px;
+}
+
+/* Link styling inside the status message */
+
+.messages--status a {
+  color: #3c763d;
+  /* Dark green links */
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.messages--status a:hover,
+.messages--status a:focus {
+  color: #2b542c;
+  /* Even darker green on hover/focus */
+}
+
+/* Visually hidden heading for screen readers */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 /* ----------------------------------------- header */
 
 .menu--main {
@@ -1662,7 +1710,6 @@ input[type="checkbox"] {
       font-weight: 700;
     }
   }
-  /* Links */
   a {
     text-decoration: none;
     cursor: pointer;
@@ -1705,8 +1752,7 @@ input[type="checkbox"] {
   .slick-list {
     margin: 0 -7px;
   }
-  &
-  svg {
+  & svg {
     &.slick-arrow {
       display: none;
     }
@@ -1791,6 +1837,36 @@ input[type="checkbox"] {
   @media (min-width: 640px) {
     padding-left: 2rem;
   }
+}
+
+#mailchimp-signup-subscribe-block-footer-signup-form-form {
+  position: relative;
+  .form-actions {
+    position: relative;
+  }
+  .ajax-progress {
+    color: white;
+    font-size: 0.8rem;
+    position: absolute;
+    bottom: -27px;
+    left: 8px;
+    .throbber {
+      padding: 10px;
+    }
+    .message {
+      display: none;
+    }
+  }
+}
+
+#mailchimp-response-mailchimp_signup_subscribe_block_footer_signup_form_form-wrapper {
+  order: 2;
+  color: white;
+  font-size: 0.8rem;
+  text-align: left;
+  padding-left: 7px;
+  position: absolute;
+  bottom: -27px;
 }
 
 /* -------------------------------------- views */
@@ -1912,8 +1988,7 @@ input[type="checkbox"] {
   color: inherit;
   height: 100%;
   width: 100%;
-  &:
-  hover {
+  &:hover {
     .product-title {
       color: var(--forest-green) !important;
     }
@@ -2055,6 +2130,26 @@ input[type="checkbox"] {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+.path-cart .views-view-table td {
+  padding: 20px;
+}
+
+.path-cart .views-view-table tbody tr:nth-child(even) {
+  background-color: #f5f4f1;
+}
+
+.path-cart {
+  .field--name-field-images {
+    .field__item {
+      display: none;
+      padding: 5px 0;
+    }
+    .field__item:first-child {
+      display: block;
+    }
+  }
 }
 
 /* ---------------------------------------- contact us page */

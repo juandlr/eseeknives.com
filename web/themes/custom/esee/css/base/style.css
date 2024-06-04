@@ -144,6 +144,54 @@ input[type="checkbox"] {
   color: inherit !important;
 }
 
+/* Container for the messages */
+[data-drupal-messages] {
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+/* Status message styling */
+.messages--status {
+  background-color: #dff0d8; /* Light green background */
+  color: #3c763d; /* Dark green text */
+  border: 1px solid #d6e9c6; /* Slightly darker green border */
+  padding: 10px 15px;
+  border-radius: 4px;
+}
+
+/* Icon styling */
+.messages--status::before {
+  content: "\2713"; /* Checkmark icon */
+  font-size: 20px;
+  color: #3c763d; /* Dark green icon */
+  margin-right: 10px;
+}
+
+
+/* Link styling inside the status message */
+.messages--status a {
+  color: #3c763d; /* Dark green links */
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.messages--status a:hover,
+.messages--status a:focus {
+  color: #2b542c; /* Even darker green on hover/focus */
+}
+
+/* Visually hidden heading for screen readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 /* ----------------------------------------- header */
 .menu--main {
   font-family: "Oswald", sans-serif;
@@ -747,6 +795,27 @@ input[type="checkbox"] {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+.path-cart .views-view-table td {
+  padding: 20px;
+
+}
+
+.path-cart .views-view-table tbody tr:nth-child(even) {
+  background-color: #f5f4f1;
+}
+
+.path-cart {
+  .field--name-field-images {
+    .field__item {
+      display: none;
+      padding: 5px 0;
+    }
+    .field__item:first-child {
+      display: block;
+    }
+  }
 }
 
 
