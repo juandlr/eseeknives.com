@@ -41,43 +41,6 @@
     <title>{{ head_title|safe_join(' | ') }}</title>
     <css-placeholder token="{{ placeholder_token }}">
     <js-placeholder token="{{ placeholder_token }}">
-      <script src="https://cdn.tailwindcss.com"></script>
-      <script>
-        tailwind.config = {
-          theme: {
-            extend: {
-              colors: {
-                mossyGreen: '#828473',
-                forestGreen: '#3a7641',
-                oliveGreen: '#575e4e',
-                fernGreen: '#434827',
-                darkOlive: '#404835',
-                lightOlive: '#718c4c',
-                snowGray: '#fdfdfd',
-                cloudGray: '#eeede8',
-                pigeonGray: '#dedcd3',
-                silverGray: '#bdbdbd',
-                ashGray: '#64615d',
-                slateGray: '#252525',
-                ivory: '#e5e5df',
-
-                gray: {
-                  '100': '#fdfdfd',  // snowGray
-                  '300': '#eeede8',  // cloudGray
-                  '500': '#dedcd3',  // pigeonGray
-                  '700': '#bdbdbd',  // gray
-                  '800': '#64615d',  // ashGray
-                  '900': '#252525',  // slateGray
-                },
-              },
-              fontFamily: {
-                'oswald': ['Oswald', 'sans-serif'],
-                'open-sans': ['Open Sans', 'sans-serif'],
-              },
-            },
-          },
-        };
-      </script>
   </head>
   <body{{ attributes.addClass(body_classes) }}>
 

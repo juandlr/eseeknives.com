@@ -6,7 +6,7 @@ global-styling:
       'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap': { type: external, minified: false }
       '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css': { type: external, minified: false }
       'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css': { type: external, minified: false, crossorigin: 'anonymous', integrity: 'sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg==' }
-      css/base/style.css: {}
+      css/base/output.css: {}
   js:
     'https://kit.fontawesome.com/4a586f9ff3.js': { type: external, crossorigin: 'anonymous' }
     '//unpkg.com/alpinejs': { type: external, defer: true }
