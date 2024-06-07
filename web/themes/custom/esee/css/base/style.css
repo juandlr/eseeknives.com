@@ -870,6 +870,13 @@ input[type="checkbox"] {
   }
 }
 
+.commerce-order-item-add-to-cart-form .ajax-progress.ajax-progress-throbber {
+  position: absolute;
+  right: -120px;
+  .message {
+    visibility: hidden;
+  }
+}
 
 
 
