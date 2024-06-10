@@ -81,6 +81,10 @@ input[type="text"]::placeholder, input[type="email"]::placeholder, input[type="t
   width: 100%;
 }
 
+input[type="text"], input[type="email"], input[type="tel"] {
+  width: 100%;
+}
+
 input[type="checkbox"] {
   display: inline;
   width: auto;
@@ -390,6 +394,9 @@ input[type="checkbox"] {
 
 .carousel {
   overflow: hidden;
+  @media (min-width: 1024px) {
+    overflow: visible;
+  }
   img {
     width: 100%;
   }
@@ -406,10 +413,10 @@ input[type="checkbox"] {
       display: none;
     }
     &.slick-next {
-      right: 0px;
+      right: -60px;
     }
     &.slick-prev {
-      left: 0px;
+      left: -60px;
       z-index: 1;
     }
     &:hover {
@@ -479,14 +486,21 @@ input[type="checkbox"] {
 }
 
 .block-facets {
-  h2 {
+  & h2 {
     cursor: pointer;
+    font-size: 1rem;
+  }
+}
+
+.accordion-header {
+  & h3 {
+    font-size: 1rem;
   }
 }
 
 #search-form {
   input {
-    display: block;
+    display: inline-block;
   }
 }
 
@@ -523,7 +537,7 @@ input[type="checkbox"] {
   text-align: left;
   padding-left: 7px;
   position: absolute;
-  bottom: -27px;
+  bottom: -50px;
 }
 
 /* -------------------------------------- views */
@@ -596,7 +610,7 @@ input[type="checkbox"] {
   .article-content {
     width: 100%;
     background-color: white;
-    color: var(--darkOlive);
+    color: var(--dark-olive);
 
     @media screen and (min-width: 768px) {
       width: 75%;
@@ -632,7 +646,7 @@ input[type="checkbox"] {
           border-bottom: 1px solid var(--dark-olive);
         }
         &:hover {
-          color: var(--lightOlive);
+          color: var(--light-olive);
         }
       }
     }
@@ -742,6 +756,15 @@ input[type="checkbox"] {
     object-fit: cover;
     width: 100%;
     height: 100%;
+  }
+  .field--name-field-images {
+    .field__item:first-child {
+      display: block;
+    }
+    .field__item {
+      height: 100%;
+      display: none;
+    }
   }
 }
 
@@ -878,7 +901,40 @@ input[type="checkbox"] {
   }
 }
 
+.checkout-order-summary table td {
+  padding: 2px 5px;
+  vertical-align: center;
+}
 
+.checkout-order-summary {
+  & table {
+    width: 100%;
+  }
+  .field--name-field-images {
+    display: inline-block;
+    .field__item {
+      display: none;
+    }
+    .field__item:first-child {
+      display: inline;
+    }
+  }
+  .field--name-title {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100px;
+  }
+}
+
+.checkout-pane {
+  & legend {
+    font-weight: 500;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    color: var(--dark-olive);
+    margin-bottom: 1rem;
+  }
+}
 
 /* ---------------------------------------- contact us page */
 #block-esee-contactusmessage {
@@ -905,7 +961,6 @@ input[type="checkbox"] {
   input[type="checkbox"] {
     appearance: none;
     margin-right: 0.5rem;
-    background-color: #fff;
     width: 14px;
     height: 14px;
     border: 2px solid #8d9183;

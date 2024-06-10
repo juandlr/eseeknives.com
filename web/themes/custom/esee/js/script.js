@@ -50,7 +50,7 @@
     });
 
     // ----------------------------------------------------- Facets accordion
-    $('.block-facets h2').click(function () {
+    $(document).on('click', '.block-facets h2', function () {
       let currentBlock = $(this).closest('.block-facets');
       let checkboxDiv = currentBlock.find('.facets-widget-checkbox');
       let chevron = $(this).find('i');

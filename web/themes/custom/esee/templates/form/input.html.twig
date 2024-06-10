@@ -16,5 +16,5 @@
   <input{{ attributes.addClass('cursor-pointer hover:text-pigeonGray p-2 inline-block bg-darkOlive text-white uppercase px-8 py-3') }} />{{ children }}
 {% else %}
   {# Default styling for other inputs #}
-  <input{{ attributes.addClass('block w-full px-2 py-1') }} />{{ children }}
+  <input{{ attributes.addClass('block max-w-full px-2 py-1') }} />{{ children }}
 {% endif %}

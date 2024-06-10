@@ -4,6 +4,28 @@ module.exports = {
     './templates/**/*.html.twig',
     './js/**/*.js',
   ],
+  safelist: [
+    'bg-pigeonGray',
+    'text-lightOlive',
+    'text-center',
+    'py-10',
+    'px-5',
+    'text-2xl',
+    'block',
+    'text-darkOlive',
+    'group-hover:text-oliveGreen',
+    'font-medium',
+    'font-open-sans',
+    'uppercase',
+    'mt-5',
+    'bg-darkOlive',
+    'mb-4',
+    'text-white',
+    'no-underline',
+    'py-3',
+    'px-8',
+    'tracking-wider'
+  ],
   theme: {
     extend: {
       colors: {
@@ -33,28 +55,7 @@ module.exports = {
       fontFamily: {
         'oswald': ['Oswald', 'sans-serif'],
         'open-sans': ['Open Sans', 'sans-serif'],
-      },
-      safelist: [
-        'bg-pigeonGray',
-        'text-center',
-        'py-10',
-        'px-5',
-        'text-2xl',
-        'block',
-        'text-darkOlive',
-        'group-hover:text-oliveGreen',
-        'font-medium',
-        'font-open-sans',
-        'uppercase',
-        'mt-5',
-        'bg-darkOlive',
-        'mb-4',
-        'text-white',
-        'no-underline',
-        'py-3',
-        'px-8',
-        'tracking-wider'
-      ],
+      }
     },
   },
   plugins: [],
