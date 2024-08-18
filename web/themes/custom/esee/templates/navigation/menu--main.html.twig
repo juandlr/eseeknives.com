@@ -30,9 +30,9 @@
   {% import _self as menus %}
   {% if items %}
     {% if menu_level == 0 %}
-      <ul{{ attributes.addClass(['menu', 'flex', 'font-medium', 'space-x-5', 'last:mb-0', 'uppercase']) }}>
+      <ul{{ attributes.addClass(['menu', 'flex', 'font-medium', 'space-x-10', 'last:mb-0', 'uppercase']) }}>
     {% else %}
-      <ul class="menu hidden p-0 list-none absolute text-darkOlive capitalize bg-white min-w-60 -left-5 z-10">
+      <ul class="menu hidden p-0 list-none absolute text-darkOlive capitalize bg-white min-w-56 -left-5 z-10">
     {% endif %}
     {% for item in items %}
       {%

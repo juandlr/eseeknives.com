@@ -133,7 +133,6 @@ input[type="checkbox"] {
   margin-bottom: 1rem;
 }
 
-
 .webform-type-fieldset, .fieldgroup {
   margin-bottom: 20px;
   padding: 0.8rem !important;
@@ -196,8 +195,21 @@ input[type="checkbox"] {
   border: 0;
 }
 
+/* FORMS ---------------------------------------------------------- */
+& input[type='checkbox'], input[type='radio'] {
+  & + label {
+    display: inline-block !important;
+  }
+}
+
 /* ----------------------------------------- header */
 .menu--main {
+  & > .menu {
+    & > li > a {
+      font-size: 18px;
+      padding-bottom: 3px;
+    }
+  }
   font-family: "Oswald", sans-serif;
   & a {
     display: block;
@@ -209,6 +221,7 @@ input[type="checkbox"] {
 
   .menu-item {
     & ul {
+      font-family: "Open Sans", sans-serif;
       .is-active {
         border-bottom: none;
       }
@@ -274,6 +287,10 @@ input[type="checkbox"] {
   .menu-desktop {
     position: relative;
     top: 1rem;
+  }
+
+  .js-form-item {
+    margin-bottom: 0;
   }
 }
 
@@ -528,6 +545,9 @@ input[type="checkbox"] {
       display: none;
     }
   }
+  .mailchimp-newsletter-mergefields {
+    align-content: center;
+  }
 }
 
 #mailchimp-response-mailchimp_signup_subscribe_block_footer_signup_form_form-wrapper {
@@ -774,7 +794,6 @@ input[type="checkbox"] {
   }
 }
 
-
 .pager {
   display: flex;
   justify-content: center;
@@ -821,8 +840,7 @@ input[type="checkbox"] {
 }
 
 .path-cart .views-view-table td {
-  padding: 20px;
-
+  padding: 5px;
 }
 
 .path-cart .views-view-table tbody tr:nth-child(even) {
@@ -891,6 +909,51 @@ input[type="checkbox"] {
   .quantity-edit-input {
     max-width: 75px;
   }
+
+  .views-table {
+    width: 100%;
+    border-collapse: collapse;
+    & thead {
+      & th {
+        background-color: #f4f4f4;
+        color: #333;
+        text-align: left;
+        padding: 3px;
+      }
+    }
+    .field--name-field-images {
+      display: none;
+    }
+    /* Small screens and above */
+    @media (min-width: 640px) {
+      .field--name-field-images {
+        display: inline-block;
+      }
+      & thead {
+        & th {
+          padding: 10px 20px;
+        }
+      }
+    }
+  }
+
+  #edit-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  /* Small screens and above */
+  @media (min-width: 640px) {
+    #edit-actions {
+      display: flex;
+      justify-content: right;
+      & input {
+        margin-left: 20px;
+      }
+    }
+  }
 }
 
 .commerce-order-item-add-to-cart-form .ajax-progress.ajax-progress-throbber {
@@ -933,6 +996,28 @@ input[type="checkbox"] {
     font-size: 1.2rem;
     color: var(--dark-olive);
     margin-bottom: 1rem;
+  }
+}
+
+#edit-payment-information-billing-information {
+  & label {
+    display: block;
+  }
+}
+
+.path-checkout {
+  & label {
+    display: block;
+  }
+}
+
+.product-single {
+
+  .form-number {
+    max-width: 75px;
+  }
+  .js-form-item {
+    margin-bottom: 10px;
   }
 }
 
@@ -1012,7 +1097,7 @@ footer {
   }
 
   img {
-    max-width: 150px;
+    max-width: 200px;
   }
 
   & h2 {
@@ -1032,23 +1117,6 @@ footer {
   }
 }
 
-/* ----------------------------------------- cart */
-.views-table {
-  width: 100%;
-  border-collapse: collapse;
-
-  th, td {
-    padding: 15px;
-    text-align: left;
-  }
-
-  thead {
-    th {
-      background-color: #f4f4f4;
-      color: #333;
-    }
-  }
-}
 
 /* --------------------------------------- store locator */
 .loc-map-container {
@@ -1115,5 +1183,27 @@ footer {
   .loc-search-box input {
     width: 100%;
     font-family: "Open Sans", sans-serif;
+  }
+}
+
+/*.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}*/
+
+.user-login-form {
+  & label {
+    display: block;
+  }
+  .js-form-item {
+    margin-bottom: 20px;
+    max-width: 568px;
+  }
+}
+
+#search-form {
+  & input {
+    display: block;
   }
 }
